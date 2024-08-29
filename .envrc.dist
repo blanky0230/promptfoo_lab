@@ -1,0 +1,5 @@
+export GROQ_API_KEY="your-api-key"
+export GROQ_PROJECT_ID="your-project-id"
+export OPENAI_API_KEY="your-api-key"
+export LANGCHAIN_TRACING_V2="true"
+export LANGCHAIN_API_KEY="your-api-key"

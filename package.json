@@ -1,0 +1,18 @@
+{
+    "name": "promptfoo_lab",
+    "module": "index.ts",
+    "devDependencies": {
+        "@biomejs/biome": "1.8.3",
+        "@types/bun": "latest",
+        "@types/node": "^22.5.1"
+    },
+    "peerDependencies": {
+        "typescript": "^5.5.4"
+    },
+    "scripts": {
+        "lint": "biome ci",
+        "format": "biome check --fix"
+    },
+    "type": "module",
+    "workspaces": ["./packages/*"]
+}

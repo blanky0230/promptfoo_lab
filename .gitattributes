@@ -1,0 +1,3 @@
+# Enable git diff for bun's binary lock file
+*.lockb binary diff=lockb
+

@@ -1,0 +1,51 @@
+{
+    "editor.rulers": [120],
+    "editor.minimap.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnType": false,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "files.autoSave": "onFocusChange",
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "search.exclude": {
+        "**/.tsc_build": true,
+        "**/*.generated.ts": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/tsconfig.tsbuildinfo": true
+    },
+    "npm.packageManager": "bun",
+    "github.copilot.enable": {
+        "markdown": true
+    },
+    "biome.rename": true,
+    "biome_lsp.trace.server": "off",
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "tsconfig.json": "tsconfig.*.json"
+    },
+    "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+    "editor.dragAndDrop": false,
+    "editor.guides.bracketPairs": "active",
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "[yaml]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "notebook.defaultFormatter": "biomejs.biome",
+    "editor.defaultFormatter": "biomejs.biome",
+    "git.ignoreLimitWarning": true
+}

@@ -1,0 +1,21 @@
+{
+    "recommendations": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "Gydunhn.typescript-essentials",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "biomejs.biome",
+        "github.vscode-github-actions",
+        "ms-ossdata.vscode-postgresql",
+        "Supabase.vscode-supabase-extension",
+        "pomdtr.excalidraw-editor",
+        "YoavBls.pretty-ts-errors",
+        "chrmarti.regex",
+        "bradlc.vscode-tailwindcss"
+    ],
+    "unwantedRecommendations": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-tslint-plugin"
+    ]
+}

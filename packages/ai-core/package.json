@@ -1,0 +1,19 @@
+{
+    "name": "ai-core",
+    "module": "index.ts",
+    "type": "module",
+    "devDependencies": {
+        "@types/bun": "latest"
+    },
+    "scripts": {
+        "lint": "biome ci",
+        "format": "biome check --fix"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    },
+    "dependencies": {
+        "@langchain/core": "^0.2.31",
+        "@langchain/groq": "^0.0.17"
+    }
+}

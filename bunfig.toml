@@ -1,0 +1,52 @@
+# ref: https://bun.sh/docs/runtime/bunfig
+
+jsx = "react"
+jsxFactory = "h"
+jsxFragment = "Fragment"
+jsxImportSource = "react"
+# toggle telemetry
+telemetry = false
+
+# Reduce memory usage at the cost of performance
+# smol = true
+
+
+# logLevel = "debug" # "debug" | "warn" | "error"
+
+
+[define]
+# Replace any usage of "process.env.bagel" with the string `lox`.
+# The values are parsed as JSON, except single-quoted strings are supported and `'undefined'` becomes `undefined` in JS.
+# This will probably change in a future release to be just regular TOML instead. It is a holdover from the CLI argument parsing.
+"process.env.bagel" = "'lox'"
+
+
+[loader]
+# when a .bagel file is imported, treat it like a tsx file
+".bagel" = "tsx"
+
+
+[test]
+# root = ""
+# preload = []
+smol = true
+coverage = true
+# to require 90% line-level and function-level coverage
+# coverageThreshold = 0.9
+coverageThreshold = { line = 0.7, function = 0.8, statement = 0.9 }
+coverageSkipTestFiles = false
+
+[install]
+production = false
+auto = "auto"
+
+[install.cache]
+distable = true
+
+[install.lockfile]
+print = "yarn"
+
+# When true, bun install will not update bun.lockb. 
+# Default false. If package.json and the existing bun.lockb 
+# are not in agreement, this will error. (default: false)
+# frozenLockfile = false

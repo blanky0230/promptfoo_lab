@@ -1,9 +1,13 @@
-import type { MatcherResult } from 'bun:test';
 import { expect } from 'bun:test';
 import type { GradingConfig } from 'promptfoo';
 import { assertions } from 'promptfoo';
 
-const { matchesSimilarity, matchesLlmRubric } = assertions;
+const {
+    matchesSimilarity,
+    matchesLlmRubric,
+    matchesAnswerRelevance,
+    matchesFactuality,
+} = assertions;
 
 interface PromptFooMatchers<Result = unknown> {
     toMatchSemanticSimilarity(
@@ -24,8 +28,8 @@ declare module 'bun:test' {
 export function installMatchers() {
     expect.extend({
         async toMatchSemanticSimilarity<T extends string>(
-            received: T,
-            expected: T,
+            received: string,
+            expected: string,
             threshold = 0.8,
         ) {
             const result = await matchesSimilarity(
@@ -33,6 +37,7 @@ export function installMatchers() {
                 expected,
                 threshold,
             );
+
             const pass = received === expected || result.pass;
             if (pass) {
                 return {
@@ -52,7 +57,7 @@ export function installMatchers() {
             received: string,
             expected: string,
             gradingConfig: GradingConfig,
-        ): Promise<MatcherResult> {
+        ) {
             const gradingResult = await matchesLlmRubric(
                 expected,
                 received,
@@ -68,6 +73,49 @@ export function installMatchers() {
             return {
                 message: () =>
                     `expected ${received} to pass LLM Rubric with ${expected}, but it did not. Reason: ${gradingResult.reason}`,
+                pass: false,
+            };
+        },
+
+        async toMatchFactuality(input, expected, received, gradingConfig) {
+            const gradingResult = await matchesFactuality(
+                input,
+                expected,
+                received,
+                gradingConfig,
+            );
+            if (gradingResult.pass) {
+                return {
+                    message: () =>
+                        `expected ${received} not to match factuality with ${expected}`,
+                    pass: true,
+                };
+            } else {
+                return {
+                    message: () =>
+                        `expected ${received} to match factuality with ${expected}, but it did not. Reason: ${gradingResult.reason}`,
+                    pass: false,
+                };
+            }
+        },
+
+        async toMatchClosedQA(input, expected, received, gradingConfig) {
+            const gradingResult = await matchesClosedQa(
+                input,
+                expected,
+                received,
+                gradingConfig,
+            );
+            if (gradingResult.pass) {
+                return {
+                    message: () =>
+                        `expected ${received} not to match ClosedQA with ${expected}`,
+                    pass: true,
+                };
+            }
+            return {
+                message: () =>
+                    `expected ${received} to match ClosedQA with ${expected}, but it did not. Reason: ${gradingResult.reason}`,
                 pass: false,
             };
         },

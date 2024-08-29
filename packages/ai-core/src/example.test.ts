@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'bun:test';
+import { describe, expect, it } from 'bun:test';
 
 describe('example', () => {
     it('is an example', () => {
@@ -6,5 +6,9 @@ describe('example', () => {
         expect(1 + 1).toBe(2);
     });
 
-    it('');
+    it('allows us to use proptfoo matchers', async () => {
+        await expect(
+            'I love cats, I love every kind of cat',
+        ).toMatchSemanticSimilarity('I like cats', 0.8);
+    });
 });
